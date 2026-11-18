@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dáng Em Store - Thời Trang Quần Jean Nữ Tối Giản</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .product-img {
+            object-fit: cover;
+            object-position: center 20%;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="bg-white text-neutral-900 antialiased selection:bg-black selection:text-white">
+
+    <!-- KHỐI 1 (ĐEN): TOP BAR THÔNG BÁO -->
+    <div class="bg-black text-white text-xs py-2 px-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <span>✨ Miễn phí vận chuyển toàn quốc cho đơn hàng từ 500K</span>
+            <div class="hidden md:flex space-x-4">
+                <a href="https://www.facebook.com/share/1BQkDWy43Z/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-400 transition"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.tiktok.com/@dangem.store" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-400 transition"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHỐI 2 (TRẮNG): HEADER CHÍNH -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200">
+        <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <button onclick="toggleMenu()" class="text-xl p-2 focus:outline-none hover:opacity-75 transition" aria-label="Mở menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <a href="#" class="flex flex-col items-center">
+                <span class="text-xl md:text-2xl font-bold tracking-[0.25em] uppercase">DÁNG EM STORE</span>
+            </a>
+
+            <div class="flex items-center space-x-5 text-lg">
+                <a href="https://www.facebook.com/share/1BQkDWy43Z/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition hidden sm:block" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@dangem.store" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition hidden sm:block" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <button onclick="openCart()" class="relative hover:opacity-75 transition" title="Giỏ hàng">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU ẨN (HAMBURGER) -->
+    <div id="side-menu" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity">
+        <div class="bg-white w-80 h-full p-6 shadow-2xl flex flex-col justify-between transform -translate-x-full transition-transform duration-300" id="menu-content">
+            <div>
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold tracking-widest">DANH MỤC</span>
+                    <button onclick="toggleMenu()" class="text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <nav class="space-y-4 text-lg font-medium">
+                    <a href="#" onclick="toggleMenu()" class="block py-2 border-b border-neutral-100 hover:pl-2 transition-all">Trang Chủ</a>
+                    <a href="#products" onclick="toggleMenu()" class="block py-2 border-b border-neutral-100 hover:pl-2 transition-all">Bộ Sưu Tập Quần Jean</a>
+                    <a href="#commitments" onclick="toggleMenu()" class="block py-2 border-b border-neutral-100 hover:pl-2 transition-all">Chính Sách & Cam Kết</a>
+                    <a href="#contact" onclick="toggleMenu()" class="block py-2 border-b border-neutral-100 hover:pl-2 transition-all">Liên Hệ</a>
+                </nav>
+            </div>
+            <div class="pt-6 border-t border-neutral-100">
+                <p class="text-xs text-neutral-500 mb-3">Kết nối với Dáng Em Store:</p>
+                <div class="flex space-x-4 text-xl">
+                    <a href="https://www.facebook.com/share/1BQkDWy43Z/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center hover:bg-black hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@dangem.store" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center hover:bg-black hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHỐI 3 (ĐEN): HERO SECTION (THUẦN ĐEN TỐI GIẢN, KHÔNG DÙNG ẢNH MẪU) -->
+    <section class="relative bg-black text-white py-28 md:py-36 overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10 max-w-5xl text-center">
+            <span class="text-xs uppercase tracking-[0.3em] bg-white text-black px-3 py-1 font-semibold rounded-full mb-4 inline-block">New Collection 2026</span>
+            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 whitespace-nowrap">TÔN VINH ĐƯỜNG CONG VIỆT</h1>
+            <p class="text-neutral-400 text-sm md:text-base mb-8 max-w-2xl mx-auto">Những thiết kế quần jean nữ cạp cao tối giản, tôn dáng chuẩn chỉnh mang lại sự tự tin và thanh lịch cho nàng trong từng bước đi.</p>
+            <div class="flex justify-center">
+                <a href="#products" class="bg-white text-black font-medium px-10 py-3.5 rounded-full hover:bg-neutral-200 transition tracking-wide">KHÁM PHÁ BỘ SƯU TẬP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHỐI 4 (TRẮNG): BỘ SƯU TẬP QUẦN JEAN (9 ẢNH CHUẨN) -->
+    <section id="products" class="py-20 container mx-auto px-4 bg-white">
+        <div class="text-center max-w-xl mx-auto mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold tracking-wide uppercase mb-3">Bộ Sưu Tập Quần Jean</h2>
+            <div class="w-12 h-0.5 bg-black mx-auto mb-3"></div>
+            <p class="text-neutral-500 text-sm">Bấm vào từng mẫu quần để xem bảng size chi tiết và thêm vào giỏ hàng.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN ỐNG RỘNG XANH WASH', '390.000 VNĐ', 'images/jean1.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean1.jpg" onerror="this.onerror=null; this.src='jean1.jpg';" alt="Quần Jean Ống Rộng Xanh Wash" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-black text-white text-[10px] px-2 py-1 uppercase tracking-wider">Bán Chạy</span>
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Ống Rộng Xanh Wash</h3>
+                <p class="text-neutral-900 font-semibold text-sm">390.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN SUÔNG RETRO PHỐI CẠP', '420.000 VNĐ', 'images/jean2.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean2.jpg" onerror="this.onerror=null; this.src='jean2.jpg';" alt="Quần Jean Suông Retro" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Suông Retro Phối Cạp</h3>
+                <p class="text-neutral-900 font-semibold text-sm">420.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN CẠP TRỄ ỐNG SUÔNG DÀI', '380.000 VNĐ', 'images/jean3.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean3.jpg" onerror="this.onerror=null; this.src='jean3.jpg';" alt="Quần Jean Cạp Trễ" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-neutral-900 text-white text-[10px] px-2 py-1 uppercase tracking-wider">New</span>
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Cạp Trễ Ống Suông DÀi</h3>
+                <p class="text-neutral-900 font-semibold text-sm">380.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN BAGGY XANH ĐẬM TỐI GIẢN', '370.000 VNĐ', 'images/jean4.png')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean4.png" onerror="this.onerror=null; this.src='images/jean4.jpg';" alt="Quần Jean Baggy Xanh Đậm" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Baggy Xanh Đậm Tối Giản</h3>
+                <p class="text-neutral-900 font-semibold text-sm">370.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN ỐNG ĐỨNG CỔ ĐIỂN', '410.000 VNĐ', 'images/jean5.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean5.jpg" onerror="this.onerror=null; this.src='jean5.jpg';" alt="Quần Jean Ống Đứng" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Ống Đứng Cổ Điển</h3>
+                <p class="text-neutral-900 font-semibold text-sm">410.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN ỐNG LOE NHẸ TÔN DÁNG', '430.000 VNĐ', 'images/jean6.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean6.jpg" onerror="this.onerror=null; this.src='jean6.jpg';" alt="Quần Jean Ống Loe Nhẹ" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-black text-white text-[10px] px-2 py-1 uppercase tracking-wider">Hot</span>
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Ống Loe Nhẹ Tôn Dáng</h3>
+                <p class="text-neutral-900 font-semibold text-sm">430.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN TRẮNG CẠP CAO TỐI GIẢN', '390.000 VNĐ', 'images/jean7.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean7.jpg" onerror="this.onerror=null; this.src='jean7.jpg';" alt="Quần Jean Trắng Cạp Cao" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-neutral-900 text-white text-[10px] px-2 py-1 uppercase tracking-wider">New</span>
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Trắng Cạp Cao Tối Giản</h3>
+                <p class="text-neutral-900 font-semibold text-sm">390.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN JEAN SUÔNG KEM THANH LỊCH', '410.000 VNĐ', 'images/jean8.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean8.jpg" onerror="this.onerror=null; this.src='jean8.jpg';" alt="Quần Jean Suông Kem" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Jean Suông Kem Thanh Lịch</h3>
+                <p class="text-neutral-900 font-semibold text-sm">410.000 VNĐ</p>
+            </div>
+
+            <div class="group cursor-pointer bg-white border border-neutral-200 rounded-lg p-3 shadow-sm hover:shadow-md transition" onclick="openSizeGuide('QUẦN SUÔNG NÂU TRẦM CAO CẤP', '430.000 VNĐ', 'images/jean9.jpg')">
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-100 rounded-md mb-4">
+                    <img src="images/jean9.jpg" onerror="this.onerror=null; this.src='jean9.jpg';" alt="Quần Suông Nâu Trầm" class="product-img w-full h-full group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="font-bold text-sm mb-1 uppercase tracking-wide">Quần Suông Nâu Trầm Cao Cấp</h3>
+                <p class="text-neutral-900 font-semibold text-sm">430.000 VNĐ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHỐI 5 (ĐEN): CAM KẾT THƯƠNG HIỆU -->
+    <section id="commitments" class="bg-black text-white py-16 px-4">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-6 border border-neutral-800 rounded-lg">
+                <i class="fa-solid fa-truck-fast text-2xl mb-3"></i>
+                <h4 class="font-bold mb-2 uppercase tracking-wider text-sm">Freeship Toàn Quốc</h4>
+                <p class="text-neutral-400 text-xs">Miễn phí giao hàng cho đơn từ 500K.</p>
+            </div>
+            <div class="p-6 border border-neutral-800 rounded-lg">
+                <i class="fa-solid fa-rotate-left text-2xl mb-3"></i>
+                <h4 class="font-bold mb-2 uppercase tracking-wider text-sm">Đổi Trả Dễ Dàng</h4>
+                <p class="text-neutral-400 text-xs">Hỗ trợ đổi size linh hoạt trong vòng 7 ngày.</p>
+            </div>
+            <div class="p-6 border border-neutral-800 rounded-lg">
+                <i class="fa-solid fa-gem text-2xl mb-3"></i>
+                <h4 class="font-bold mb-2 uppercase tracking-wider text-sm">Chất Liệu Cao Cấp</h4>
+                <p class="text-neutral-400 text-xs">Vải denim dày dặn, đứng form, tôn dáng.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL BẢNG SIZE & CHỌN MUA -->
+    <div id="size-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-xl p-6 relative text-neutral-900 shadow-2xl">
+            <button onclick="closeSizeModal()" class="absolute top-4 right-4 text-lg text-neutral-400 hover:text-black"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex gap-4 items-center mb-4">
+                <img id="modal-img" src="" alt="Product" class="w-20 h-24 object-cover rounded-md bg-neutral-100">
+                <div>
+                    <h4 id="modal-title" class="font-bold text-sm mb-1">Tên sản phẩm</h4>
+                    <p id="modal-price" class="text-neutral-900 font-bold text-base">0 VNĐ</p>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">Bảng Size Chuẩn</label>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div class="border border-neutral-200 p-2 rounded"><strong>Size S</strong><br>Eo: 60-64cm</div>
+                    <div class="border border-neutral-200 p-2 rounded bg-neutral-50 border-black"><strong>Size M</strong><br>Eo: 65-69cm</div>
+                    <div class="border border-neutral-200 p-2 rounded"><strong>Size L</strong><br>Eo: 70-74cm</div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">Chọn Size Của Bạn</label>
+                <div class="flex gap-3">
+                    <button type="button" onclick="selectSize(this)" class="size-btn flex-1 py-2 border border-neutral-300 rounded text-sm font-medium hover:border-black transition">S</button>
+                    <button type="button" onclick="selectSize(this)" class="size-btn flex-1 py-2 border border-neutral-300 rounded text-sm font-medium hover:border-black transition bg-black text-white">M</button>
+                    <button type="button" onclick="selectSize(this)" class="size-btn flex-1 py-2 border border-neutral-300 rounded text-sm font-medium hover:border-black transition">L</button>
+                </div>
+            </div>
+
+            <button onclick="addToCartAndOpen()" class="w-full bg-black text-white py-3.5 rounded-full font-medium tracking-wide hover:bg-neutral-800 transition">THÊM VÀO GIỎ HÀNG</button>
+        </div>
+    </div>
+
+    <!-- NGĂN KÉO GIỎ HÀNG -->
+    <div id="cart-drawer" class="fixed inset-0 bg-black/50 z-50 hidden justify-end">
+        <div class="bg-white w-full max-w-md h-full p-6 shadow-2xl flex flex-col justify-between text-neutral-900">
+            <div>
+                <div class="flex justify-between items-center pb-4 border-b border-neutral-200">
+                    <span class="text-lg font-bold tracking-widest uppercase">Giỏ Hàng Của Bạn</span>
+                    <button onclick="closeCart()" class="text-xl p-2 text-neutral-400 hover:text-black"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <p class="text-sm text-neutral-500 text-center py-10">Giỏ hàng đang trống.</p>
+                </div>
+            </div>
+            <div class="pt-4 border-t border-neutral-200">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-medium text-neutral-500">Tổng cộng:</span>
+                    <span id="cart-total" class="text-lg font-bold">0 VNĐ</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-black text-white py-3.5 rounded-full font-medium tracking-wide hover:bg-neutral-800 transition">ĐẶT HÀNG NGAY</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHỐI 6 (ĐEN): FOOTER CHÂN TRANG (THÔNG TIN ĐẠI DIỆN AN TOÀN) -->
+    <footer id="contact" class="bg-black text-white pt-16 pb-12 border-t border-neutral-800">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div>
+                <span class="text-xl font-bold tracking-[0.25em] uppercase block mb-4">DÁNG EM STORE</span>
+                <p class="text-neutral-400 text-sm leading-relaxed">Thương hiệu thời trang quần jean nữ thiết kế tối giản, đồng hành cùng sự tự tin và thanh lịch của phái đẹp.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm tracking-widest uppercase mb-4">Thông Tin Liên Hệ</h4>
+                <p class="text-neutral-400 text-sm mb-2"><i class="fa-solid fa-location-dot mr-2"></i> Biên Hòa, Đồng Nai</p>
+                <p class="text-neutral-400 text-sm mb-2"><i class="fa-solid fa-phone mr-2"></i> 098.123.4567</p>
+                <p class="text-neutral-400 text-sm"><i class="fa-solid fa-envelope mr-2"></i> contact@dangem.store</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm tracking-widest uppercase mb-4">Kết Nối Mạng Xã Hội</h4>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/share/1BQkDWy43Z/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-white hover:text-black transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@dangem.store" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-white hover:text-black transition text-lg"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 pt-8 border-t border-neutral-800 text-center text-xs text-neutral-500">
+            &copy; 2026 Dáng Em Store. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let currentProduct = {};
+        let selectedSizeText = 'M';
+
+        function toggleMenu() {
+            const menu = document.getElementById('side-menu');
+            const content = document.getElementById('menu-content');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { content.classList.remove('-translate-x-full'); }, 10);
+            } else {
+                content.classList.add('-translate-x-full');
+                setTimeout(() => { menu.classList.add('hidden'); }, 300);
+            }
+        }
+
+        function openSizeGuide(title, price, img) {
+            currentProduct = { title, price, img, numericPrice: parseInt(price.replace(/\D/g, '')) };
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-price').innerText = price;
+            
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = img;
+            modalImg.onerror = function() {
+                this.onerror = null;
+                this.src = img.replace('images/', '');
+            };
+            
+            document.getElementById('size-modal').classList.remove('hidden');
+        }
+
+        function closeSizeModal() {
+            document.getElementById('size-modal').classList.add('hidden');
+        }
+
+        function selectSize(btn) {
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.classList.remove('bg-black', 'text-white');
+            });
+            btn.classList.add('bg-black', 'text-white');
+            selectedSizeText = btn.innerText;
+        }
+
+        function addToCartAndOpen() {
+            cart.push({ ...currentProduct, size: selectedSizeText });
+            updateCartUI();
+            closeSizeModal();
+            openCart();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-sm text-neutral-500 text-center py-10">Giỏ hàng đang trống.</p>';
+                document.getElementById('cart-total').innerText = '0 VNĐ';
+                return;
+            }
+            let total = 0;
+            container.innerHTML = cart.map((item, idx) => {
+                total += item.numericPrice;
+                return `
+                    <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.img}" onerror="this.onerror=null; this.src='${item.img.replace('images/', '')}';" class="w-14 h-16 object-cover rounded bg-neutral-100">
+                            <div>
+                                <h5 class="text-xs font-bold uppercase">${item.title}</h5>
+                                <p class="text-xs text-neutral-500">Size: ${item.size}</p>
+                                <p class="text-xs font-semibold mt-0.5">${item.price}</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" class="text-neutral-400 hover:text-black text-sm p-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + ' VNĐ';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function openCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.remove('hidden');
+            drawer.classList.add('flex');
+        }
+
+        function closeCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.add('hidden');
+            drawer.classList.remove('flex');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Giỏ hàng của bạn đang trống. Hãy chọn mẫu quần jean yêu thích nhé!');
+                return;
+            }
+            alert('Cảm ơn bạn đã đặt hàng tại Dáng Em Store! Đơn hàng của bạn đã được ghi nhận.');
+            cart = [];
+            updateCartUI();
+            closeCart();
+        }
+
+        // Phím ESC đóng tất cả
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSizeModal();
+                closeCart();
+                const menu = document.getElementById('side-menu');
+                if (!menu.classList.contains('hidden')) toggleMenu();
+            }
+        });
+    </script>
+</body>
+</html>
